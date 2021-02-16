@@ -1,0 +1,21 @@
+<template>
+    <div>
+        <template if:true={contacts.data}>
+           <div>
+               <template for:each={contacts.data} for:item="con">
+                  <div key={con.Id}>
+                    <lightning-card  title="Hello">
+                        <lightning-button label="New" variant="brand" slot="actions" key={con.Id} value={con.Id} name={con.Id} onclick={NavigateToDetail}></lightning-button>
+                        <p class="slds-p-horizontal_small">{con.Name}</p>
+                        <p class="slds-p-horizontal_small">{con.Phone}</p>
+                        <p slot="footer">{con.Email}</p>
+                    </lightning-card>
+                  </div>
+               </template>
+           </div>
+        </template>
+        <template if:true={contacts.error}>
+
+        </template>
+    </div>
+</template>

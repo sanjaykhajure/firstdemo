@@ -1,0 +1,18 @@
+<template>
+    <div class="slds-box">
+        <template if:true={contacts.data}>
+            <div>
+                <template for:each={contacts.data} for:item="con">
+                    <div key={con.id}>
+                        <lightning-card  title="Hello" key={con.id}>
+                            <lightning-button label="New" slot="actions" value={con.Id} name={con.Id} onclick={NavigateToDetails}></lightning-button>
+                            <p class="slds-p-horizontal_small">{con.Id}</p>
+                            <p class="slds-p-horizontal_small">{con.Name}</p>
+                            <p slot="footer">Card Footer</p>
+                        </lightning-card>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

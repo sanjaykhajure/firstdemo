@@ -1,0 +1,28 @@
+<template>
+    <div class="slds:box">
+        <lightning-input label="Enter case"
+                         placeholder="Case number"
+                         value={searchCaseNumber}
+                         onchange={caseNumberChange}></lightning-input>
+
+    </div>
+    <div>
+        <template if:true={receivedcases}>
+            <div>
+                <template for:each={receivedcases} for:item="ca">
+                    <div key={ca.id}>
+                        <lightning-card  title="Hello" key={ca.id}>
+                            <lightning-button label="New" slot="actions" value={ca.Id} name={ca.Id}></lightning-button>
+                            <p class="slds-p-horizontal_small">{ca.Id}</p>
+                            <p class="slds-p-horizontal_small">{ca.Account.Name}</p>
+                            <p class="slds-p-horizontal_small">{ca.CaseNumber}</p>
+                            <p class="slds-p-horizontal_small">{ca.IsClosed}</p>
+                            <p class="slds-p-horizontal_small">{ca.Origin}</p>
+                            <p slot="footer">Card Footer</p>
+                        </lightning-card>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

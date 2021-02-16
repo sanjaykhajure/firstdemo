@@ -1,0 +1,17 @@
+<template>
+    <div>
+        <lightning-input label="Enter some text" placeholder="enter teeext" value={myAccountId} 
+                        onchange={accountChange}> 
+        </lightning-input>       
+    </div>
+    <template if:true={fcont}>
+        <div>
+            <template for:each={fcount} for:item="tt">
+                <li key={tt.Id}>
+                      {tt.Id}
+                     {tt.Name}
+                </li>
+            </template>
+        </div>
+    </template>
+</template>

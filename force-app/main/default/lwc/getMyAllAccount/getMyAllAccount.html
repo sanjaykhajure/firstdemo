@@ -1,0 +1,71 @@
+<template>
+    <div>
+        <template if:true={receivedAccounts.data}>
+            <div class="slds-box">
+                <template if:true={receivedAccounts.data}>
+                   <div class="slds-grid slds-wrap slds-gutters">
+                    <template for:each={receivedAccounts.data} for:item="acc">
+                        <div class="slds-col slds-size_1-of-3 slds-p-around_small" key={acc.Id}>
+                            <lightning-card  title="Account" key={acc.Id}>
+                                <lightning-button variant="Success" label="view contacts" slot="actions" value={acc.Id} onclick={contactcall}></lightning-button>
+                                <p class="slds-p-horizontal_small">{acc.Id}</p>
+                                <p class="slds-p-horizontal_small">{acc.Name}</p>
+                                <p class="slds-p-horizontal_small">{acc.Fax}</p>
+                                <p class="slds-p-horizontal_small">{acc.Phone}</p>
+                                <p class="slds-p-horizontal_small">{acc.no_of_contacts__c}</p>
+                                <p slot="footer">{acc.Rating}</p>
+                            </lightning-card>
+                        </div>
+                    </template>
+                   </div>
+                </template>
+            </div>
+           
+        </template>
+
+        <template if:true={contacts.data}>
+            <div>
+                <template for:each={contacts.data} for:item="con">
+                    <div key={con.Id}>
+                        <lightning-card  title="Contact" key={con.Id}>
+                            <lightning-button variant="Success" label="Edit" slot="actions" value={con.Id} onclick={editContactCall}></lightning-button>
+                            <lightning-button variant="Success" style="padding-left:5px" label="Delete" slot="actions" value={con.Id} onclick={deleteContactCall}></lightning-button>
+                            <lightning-button variant="Success" style="padding-left:5px" label="view" slot="actions" value={con.Id} onclick={viewContact}></lightning-button>
+                            <p class="slds-p-horizontal_small">{con.Id}</p>
+                            <p class="slds-p-horizontal_small">{con.Name}</p>                            
+                        </lightning-card>
+                    </div>
+                </template>
+            </div>
+           
+        </template>
+      
+    </div>
+   <!--open contact -->
+      <!-- <template if:true={contopen}>
+           <div>
+              <c-edit-contact contid={mycontactid}></c-edit-contact>
+              <c-edit-contact  conid={mycontactid}></c-edit-contact>
+           </div>
+       </template>-->
+
+       <template if:true={contopen}>
+        <div>
+            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <lightning-card title="ssss" icon-name="standard:people">
+                            <lightning-button  class="slds-modal__close" icon-name="utility:close" onclick={contactClose}></lightning-button>
+                            
+                        </lightning-card>
+                    </header>
+                
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <c-edit-contact cont-id={mycontactid}></c-edit-contact>
+                                              
+                    </div>            
+                </div>
+            </section>
+        </div>
+</template>
+</template>

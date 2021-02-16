@@ -1,0 +1,27 @@
+<template>
+    <div>
+        <template if:true={mycontacts.data}>
+          <div class="slds-grid slds-gutters"> 
+              <template for:each={mycontacts.data} for:item="acc" key={acc.Id}>
+                  
+                  <div key={acc.Id} class="slds-col slds-size_1-of-3"> 
+                    <lightning-card  title="Hello">
+                        <lightning-button label="New" slot="actions" onclick={NavigteDetails} name={acc.Id} value={acc.Id}></lightning-button>
+                        <p class="slds-p-horizontal_small"> {acc.Id} 
+                            {acc.Name} </br>
+                            {acc.AccountNumber} </br>
+                            {acc.Rating} </br>
+                            {acc.Phone} </br>
+                            {acc.Website}</p>
+                        <p slot="footer">Card Footer</p>
+                    </lightning-card>
+                   
+                  </div>
+              </template>
+          </div>
+        </template>
+        <template if:true={mycontacts.error}>
+            {mycontacts.error.body.message}
+        </template>
+    </div>
+</template>

@@ -1,0 +1,18 @@
+<template>
+    <div>
+        <p>hello</p>
+        <template if:true={contacts.data}>
+            <template for:each={contacts.data} for:item="con">
+               <div key={con.Id}>
+               <p>  {con.Name}</p>
+                <p>{con.Email}</p>
+               </div>
+            </template>
+
+        </template>
+        <template if:true={contacts.error}>
+            {contacts.error.body.message}
+        </template>
+        
+    </div>
+</template>
